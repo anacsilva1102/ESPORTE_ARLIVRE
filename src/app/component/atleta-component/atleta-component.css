@@ -34,7 +34,7 @@
     font-weight: bold;
 }
 
-#form-atleta input,
+#form-atleta input:not(.btnSelecao),
 #form-atleta select {
     width: 100%;
     padding: 11px;
@@ -48,10 +48,26 @@
     transition: 0.3s;
 }
 
-#form-atleta input:focus,
+#form-atleta input:not(.btnSelecao):focus,
 #form-atleta select:focus {
     border-color: #c77d9b;
     box-shadow: 0 0 0 2px rgba(199, 125, 155, 0.1);
+}
+
+#form-atleta .btnSelecao {
+    width: auto;
+    padding: 0;
+    margin: 0 5px 20px 15px;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    outline: none;
+    accent-color: #c77d9b;
+    vertical-align: middle;
+}
+
+#form-atleta label[for="sexo"] {
+    margin-bottom: 10px;
 }
 
 #form-atleta button {
@@ -83,5 +99,10 @@
 
     #atleta h1 {
         font-size: 25px;
+    }
+
+    #form-atleta .btnSelecao {
+        margin-left: 8px;
+        margin-right: 3px;
     }
 }
