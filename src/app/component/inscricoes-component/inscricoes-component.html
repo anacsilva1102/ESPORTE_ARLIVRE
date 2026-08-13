@@ -1,23 +1,60 @@
 <section class="pagina">
 
-    <h1>Inscrições</h1>
+    <h1>Inscrição</h1>
 
-    <p>Faça sua inscrição em uma corrida.</p>
+    <p>Preencha seus dados para participar da corrida.</p>
 
-    <form>
+    <form (submit)="realizarInscricao()">
 
         <label>Nome do atleta</label>
-        <input type="text" placeholder="Informe seu nome">
+
+        <input
+            type="text"
+            [(ngModel)]="nome"
+            name="nome"
+            placeholder="Informe seu nome"
+            required
+        >
+
+        <label>CPF</label>
+
+        <input
+            type="text"
+            [(ngModel)]="cpf"
+            name="cpf"
+            placeholder="Informe seu CPF"
+            required
+        >
 
         <label>Corrida</label>
 
-        <select>
-            <option>Selecione uma corrida</option>
-            <option>Corrida Esporte ArLivre</option>
+        <select
+            [(ngModel)]="corrida"
+            name="corrida"
+            required
+        >
+            <option value="">Selecione uma corrida</option>
+            <option value="Corrida Esporte ArLivre">
+                Corrida Esporte ArLivre
+            </option>
+            <option value="Corrida ArLivre Kids">
+                Corrida ArLivre Kids
+            </option>
+            <option value="Desafio ArLivre">
+                Desafio ArLivre
+            </option>
         </select>
 
-        <button type="submit">Realizar Inscrição</button>
+        <button type="submit">
+            Confirmar Inscrição
+        </button>
 
     </form>
+
+    @if (mensagem) {
+        <div class="mensagem">
+            {{ mensagem }}
+        </div>
+    }
 
 </section>

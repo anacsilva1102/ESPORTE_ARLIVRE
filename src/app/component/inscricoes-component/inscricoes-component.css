@@ -5,14 +5,17 @@
     padding: 40px;
     background-color: #fff7fa;
     border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(199, 125, 155, 0.15);
 }
 
 .pagina h1 {
     text-align: center;
     color: #c77d9b;
+    font-size: 32px;
+    margin-bottom: 10px;
 }
 
-.pagina p {
+.pagina > p {
     text-align: center;
     color: #79515f;
     margin-bottom: 30px;
@@ -30,7 +33,7 @@
 
 .pagina label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
     color: #79515f;
     font-weight: bold;
 }
@@ -38,11 +41,17 @@
 .pagina input,
 .pagina select {
     width: 100%;
-    padding: 10px;
+    padding: 11px;
     margin-bottom: 20px;
     border: 1px solid #f0bfd0;
     border-radius: 8px;
     box-sizing: border-box;
+    outline: none;
+}
+
+.pagina input:focus,
+.pagina select:focus {
+    border-color: #c77d9b;
 }
 
 .pagina button {
@@ -54,8 +63,21 @@
     color: #6f3d50;
     font-weight: bold;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .pagina button:hover {
     background-color: #e9afc4;
+}
+
+.mensagem {
+    width: 600px;
+    max-width: 100%;
+    margin: 20px auto 0;
+    padding: 15px;
+    text-align: center;
+    background-color: #f4c6d7;
+    color: #6f3d50;
+    border-radius: 10px;
+    font-weight: bold;
 }

@@ -5,22 +5,29 @@
     padding: 40px;
     background-color: #fff7fa;
     border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(199, 125, 155, 0.15);
 }
 
 .pagina h1 {
     text-align: center;
     color: #c77d9b;
+    font-size: 32px;
+    margin-bottom: 10px;
 }
 
 .pagina > p {
     text-align: center;
     color: #79515f;
+    margin-bottom: 35px;
+}
+
+.corridas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
 .card {
-    width: 600px;
-    max-width: 100%;
-    margin: 30px auto;
     padding: 25px;
     background-color: #ffffff;
     border-radius: 15px;
@@ -29,18 +36,35 @@
 
 .card h2 {
     color: #c77d9b;
+    font-size: 21px;
+    margin-top: 0;
 }
 
 .card p {
     color: #79515f;
+    line-height: 1.5;
 }
 
 .card button {
-    padding: 10px 25px;
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
     border: none;
     border-radius: 20px;
     background-color: #f4c6d7;
     color: #6f3d50;
     font-weight: bold;
     cursor: pointer;
+    transition: 0.3s;
+}
+
+.card button:hover {
+    background-color: #e9afc4;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 800px) {
+    .corridas {
+        grid-template-columns: 1fr;
+    }
 }
