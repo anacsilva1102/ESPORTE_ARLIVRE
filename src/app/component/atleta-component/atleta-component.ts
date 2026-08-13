@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-atleta-component',
   standalone: true,
   imports: [],
-  templateUrl: './atleta-component.component.html',
-  styleUrl: './atleta-component.component.css'
+  templateUrl: './atleta-component.html',
+  styleUrl: './atleta-component.css',
 })
 export class AtletaComponent {}

@@ -1,8 +1,8 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
-import { MenuComponent } from './component/menu-component/menu-component.component';
-import { AtletaComponent } from './component/atleta-component/atleta-component.component';
+import { MenuComponent } from './component/menu-component/menu-component';
+import { AtletaComponent } from './component/atleta-component/atleta-component';
 
 @Component({
   selector: 'app-root',
