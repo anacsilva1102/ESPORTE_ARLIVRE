@@ -1,0 +1,61 @@
+.pagina {
+    width: 1000px;
+    max-width: 95%;
+    margin: 30px auto;
+    padding: 40px;
+    background-color: #fff7fa;
+    border-radius: 20px;
+}
+
+.pagina h1 {
+    text-align: center;
+    color: #c77d9b;
+}
+
+.pagina p {
+    text-align: center;
+    color: #79515f;
+    margin-bottom: 30px;
+}
+
+.pagina form {
+    width: 600px;
+    max-width: 100%;
+    margin: auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(199, 125, 155, 0.2);
+}
+
+.pagina label {
+    display: block;
+    margin-bottom: 5px;
+    color: #79515f;
+    font-weight: bold;
+}
+
+.pagina input,
+.pagina select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #f0bfd0;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.pagina button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 20px;
+    background-color: #f4c6d7;
+    color: #6f3d50;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.pagina button:hover {
+    background-color: #e9afc4;
+}
