@@ -1,60 +1,206 @@
-<section class="pagina">
+<div id="inscricao">
 
-    <h1>Inscrição</h1>
+    <h1>Inscrição na Corrida</h1>
 
-    <p>Preencha seus dados para participar da corrida.</p>
+    <form
+        id="form-inscricao"
+        (submit)="finalizarInscricao()">
 
-    <form (submit)="realizarInscricao()">
+        <div class="linha">
 
-        <label>Nome do atleta</label>
+            <div class="campo">
 
-        <input
-            type="text"
-            [(ngModel)]="nome"
-            name="nome"
-            placeholder="Informe seu nome"
-            required
-        >
+                <label for="atleta">
+                    Atleta Cadastrado
+                </label>
 
-        <label>CPF</label>
+                <select
+                    id="atleta"
+                    name="atleta"
+                    [(ngModel)]="inscricao.atleta"
+                    required>
 
-        <input
-            type="text"
-            [(ngModel)]="cpf"
-            name="cpf"
-            placeholder="Informe seu CPF"
-            required
-        >
+                    <option value="">
+                        Selecione o atleta
+                    </option>
 
-        <label>Corrida</label>
+                    <option
+                        *ngFor="let atleta of atletas"
+                        [value]="atleta.nome">
+
+                        {{ atleta.nome }}
+
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="campo">
+
+                <label for="cpf">
+                    CPF
+                </label>
+
+                <input
+                    type="text"
+                    id="cpf"
+                    name="cpf"
+                    [(ngModel)]="inscricao.cpf"
+                    placeholder="000.000.000-00">
+
+            </div>
+
+        </div>
+
+        <label for="corrida">
+            Corrida Escolhida
+        </label>
 
         <select
-            [(ngModel)]="corrida"
+            id="corrida"
             name="corrida"
-            required
-        >
-            <option value="">Selecione uma corrida</option>
-            <option value="Corrida Esporte ArLivre">
-                Corrida Esporte ArLivre
+            [(ngModel)]="inscricao.corrida"
+            required>
+
+            <option value="">
+                Selecione uma corrida
             </option>
-            <option value="Corrida ArLivre Kids">
-                Corrida ArLivre Kids
+
+            <option
+                *ngFor="let corrida of corridas"
+                [value]="corrida.descricao">
+
+                {{ corrida.descricao }}
+
             </option>
-            <option value="Desafio ArLivre">
-                Desafio ArLivre
-            </option>
+
         </select>
 
-        <button type="submit">
-            Confirmar Inscrição
-        </button>
+        <label>
+            Distância da Prova
+        </label>
+
+        <div class="opcoes">
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="distancia"
+                    value="5km"
+                    [(ngModel)]="inscricao.distancia">
+
+                5 km
+
+            </label>
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="distancia"
+                    value="10km"
+                    [(ngModel)]="inscricao.distancia">
+
+                10 km
+
+            </label>
+
+            <label>
+
+                <input
+                    type="radio"
+                    name="distancia"
+                    value="25km"
+                    [(ngModel)]="inscricao.distancia">
+
+                25 km
+
+            </label>
+
+        </div>
+
+        <div class="linha">
+
+            <div class="campo">
+
+                <label for="camiseta">
+                    Tamanho da Camiseta
+                </label>
+
+                <select
+                    id="camiseta"
+                    name="camiseta"
+                    [(ngModel)]="inscricao.camiseta"
+                    required>
+
+                    <option value="">
+                        Selecione
+                    </option>
+
+                    <option value="P">P</option>
+                    <option value="M">M</option>
+                    <option value="G">G</option>
+                    <option value="GG">GG</option>
+
+                </select>
+
+            </div>
+
+            <div class="campo">
+
+                <label for="categoria">
+                    Categoria / Faixa Etária
+                </label>
+
+                <input
+                    type="text"
+                    id="categoria"
+                    name="categoria"
+                    [(ngModel)]="inscricao.categoria"
+                    placeholder="Ex: 30-39 anos">
+
+            </div>
+
+        </div>
+
+        <div class="valor">
+
+            <span>
+                Valor da Inscrição:
+            </span>
+
+            <strong>
+                R$ 89,90
+            </strong>
+
+        </div>
+
+        <label class="termos">
+
+            <input
+                type="checkbox"
+                name="termos"
+                [(ngModel)]="inscricao.termos"
+                required>
+
+            Li e aceito os termos do regulamento da prova.
+
+        </label>
+
+        <div id="div-btns">
+
+            <button
+                type="submit"
+                id="btnFinalizar">
+
+                Finalizar e Ir para Pagamento
+
+            </button>
+
+        </div>
 
     </form>
 
-    @if (mensagem) {
-        <div class="mensagem">
-            {{ mensagem }}
-        </div>
-    }
-
-</section>
+</div>

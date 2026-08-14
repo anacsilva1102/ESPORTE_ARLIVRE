@@ -1,38 +1,227 @@
-<div id="div-form">
-    <h2>Cadastro Atleta </h2>
-    
-    <form id="form-atleta">
-        <label for="nome">Nome</label>
-        <input type="text" name="nome" id="nome" class="input01" required maxlength="80" placeholder="Informe seu nome">
+<div id="atleta">
 
-        <label for="cpf">CPF</label>
-        <input type="text" name="cpf" id="cpf" class="input02" required maxlength="14" placeholder="Informe seu cpf">
+    <h1>Cadastro de Atleta</h1>
 
-        <label for="sexo">sexo</label>
-        <input type="radio" name="sexo" id="sexoM" class="btnSelecao" value="M"> Masculino
-        <input type="radio" name="sexo" id="sexoF" class="btnSelecao" value="F"> Feminino
-        <input type="radio" name="sexo" id="sexoN" class="btnSelecao" value="N"> Não se Identificar
+    <form id="form-atleta" (submit)="cadastrarAtleta()">
 
-        <label for="cep">CEP</label>
-        <input type="text" name="cep" id="cep" class="input02" required maxlength="9" placeholder="Informe seu cep">
+        <label for="nome">
+            Nome Completo
+        </label>
 
-        <label for="rua-logradouro">Rua/Logradouro</label>
-        <input type="text" name="rua-logradouro" id="rua-logradouro" class="input01" required maxlength="100" placeholder="Informe rua/logradouro">
+        <input
+            type="text"
+            id="nome"
+            name="nome"
+            placeholder="Digite seu nome completo"
+            [(ngModel)]="atleta.nome"
+            required
+        >
 
-        <label for="bairro">Bairro</label>
-        <input type="text" name="bairro" id="bairro" class="input02" required maxlength="20"
-            placeholder="Informe seu bairro">
+        <div class="linha">
 
-        <label for="cidade">Cidade</label>
-        <input type="text" name="cidade" id="cidade" class="input02" required maxlength="60"
-            placeholder="Informe seu cidade">
+            <div class="campo">
 
-        <label for="uf">UF</label>
-        <input type="text" name="uf" id="uf" class="input02" required maxlength="2" placeholder="Informe seu uf">
+                <label for="cpf">
+                    CPF
+                </label>
+
+                <input
+                    type="text"
+                    id="cpf"
+                    name="cpf"
+                    placeholder="000.000.000-00"
+                    [(ngModel)]="atleta.cpf"
+                    required
+                >
+
+            </div>
+
+            <div class="campo">
+
+                <label>
+                    Sexo
+                </label>
+
+                <div class="sexo-opcoes">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="sexo"
+                            value="Masculino"
+                            [(ngModel)]="atleta.sexo"
+                        >
+
+                        Masculino
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="sexo"
+                            value="Feminino"
+                            [(ngModel)]="atleta.sexo"
+                        >
+
+                        Feminino
+                    </label>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="linha">
+
+            <div class="campo">
+
+                <label for="cep">
+                    CEP
+                </label>
+
+                <input
+                    type="text"
+                    id="cep"
+                    name="cep"
+                    placeholder="00000-000"
+                    [(ngModel)]="atleta.cep"
+                    required
+                >
+
+            </div>
+
+            <div class="campo">
+
+                <label for="rua">
+                    Rua / Logradouro
+                </label>
+
+                <input
+                    type="text"
+                    id="rua"
+                    name="rua"
+                    placeholder="Rua, avenida, etc."
+                    [(ngModel)]="atleta.rua"
+                    required
+                >
+
+            </div>
+
+        </div>
+
+        <div class="linha">
+
+            <div class="campo">
+
+                <label for="bairro">
+                    Bairro
+                </label>
+
+                <input
+                    type="text"
+                    id="bairro"
+                    name="bairro"
+                    placeholder="Digite o bairro"
+                    [(ngModel)]="atleta.bairro"
+                    required
+                >
+
+            </div>
+
+            <div class="campo">
+
+                <label for="uf">
+                    Estado
+                </label>
+
+                <select
+                    id="uf"
+                    name="uf"
+                    [(ngModel)]="atleta.uf"
+                    (change)="carregarMunicipios()"
+                    required
+                >
+
+                    <option value="">
+                        Selecione o estado
+                    </option>
+
+                    <option
+                        *ngFor="let estado of estados"
+                        [value]="estado.uf"
+                    >
+
+                        {{ estado.nome }} - {{ estado.uf }}
+
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+        <div class="linha">
+
+            <div class="campo">
+
+                <label for="municipio">
+                    Município
+                </label>
+
+                <select
+                    id="municipio"
+                    name="municipio"
+                    [(ngModel)]="atleta.municipio"
+                    [disabled]="!atleta.uf || carregandoMunicipios"
+                    required
+                >
+
+                    <option value="">
+
+                        {{
+                            carregandoMunicipios
+                            ? 'Carregando municípios...'
+                            : 'Selecione o município'
+                        }}
+
+                    </option>
+
+                    <option
+                        *ngFor="let municipio of municipios"
+                        [value]="municipio.nome"
+                    >
+
+                        {{ municipio.nome }}
+
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
 
         <div id="div-btns">
-            <button type="submit" id="btnAdd"> Cadastrar Atleta </button>
+
+            <button
+                type="submit"
+                id="btnAdd"
+            >
+                Cadastrar Atleta
+            </button>
+
+            <button
+                type="button"
+                id="btnLimpar"
+                (click)="limparFormulario()"
+            >
+                Limpar
+            </button>
+
         </div>
 
     </form>
+
 </div>

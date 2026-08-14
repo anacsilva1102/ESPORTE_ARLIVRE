@@ -1,22 +1,86 @@
-<section class="pagina">
+<div id="corrida">
 
-    <h1>Cadastro de Corridas</h1>
+    <h1>Cadastro de Corrida</h1>
 
-    <p>Cadastre uma nova corrida.</p>
+    <form id="form-corrida" (submit)="cadastrarCorrida()">
 
-    <form>
+        <label for="descricao">
+            Descrição da Corrida
+        </label>
 
-        <label>Nome da corrida</label>
-        <input type="text" placeholder="Informe o nome da corrida">
+        <input
+            type="text"
+            id="descricao"
+            name="descricao"
+            [(ngModel)]="corrida.descricao"
+            placeholder="Digite a descrição da corrida"
+            required
+        >
 
-        <label>Data</label>
-        <input type="date">
+        <label for="data">
+            Data da Corrida
+        </label>
 
-        <label>Local</label>
-        <input type="text" placeholder="Informe o local">
+        <input
+            type="date"
+            id="data"
+            name="data"
+            [(ngModel)]="corrida.data"
+            required
+        >
 
-        <button type="submit">Cadastrar Corrida</button>
+        <label>
+            Distâncias Disponíveis
+        </label>
+
+        <div class="distancias">
+
+            <label>
+                <input
+                    type="checkbox"
+                    name="km5"
+                    [(ngModel)]="corrida.km5"
+                >
+                5 km
+            </label>
+
+            <label>
+                <input
+                    type="checkbox"
+                    name="km10"
+                    [(ngModel)]="corrida.km10"
+                >
+                10 km
+            </label>
+
+            <label>
+                <input
+                    type="checkbox"
+                    name="km25"
+                    [(ngModel)]="corrida.km25"
+                >
+                25 km
+            </label>
+
+        </div>
+
+        <div id="div-btns">
+
+            <button
+                type="submit"
+                id="btnAdd">
+                Cadastrar Corrida
+            </button>
+
+            <button
+                type="button"
+                id="btnLimpar"
+                (click)="limparFormulario()">
+                Limpar
+            </button>
+
+        </div>
 
     </form>
 
-</section>
+</div>

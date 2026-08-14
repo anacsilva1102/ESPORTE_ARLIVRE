@@ -1,70 +1,105 @@
-.pagina {
+#corridas {
     width: 1000px;
     max-width: 95%;
+    min-height: 500px;
     margin: 30px auto;
     padding: 40px;
     background-color: #fff7fa;
+    box-sizing: border-box;
     border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(199, 125, 155, 0.15);
+    box-shadow: 0 4px 15px rgba(232, 169, 191, 0.12);
 }
 
-.pagina h1 {
+#corridas h1 {
     text-align: center;
-    color: #c77d9b;
-    font-size: 32px;
-    margin-bottom: 10px;
+    color: #b56b88;
+    margin-bottom: 30px;
+    font-size: 30px;
 }
 
-.pagina > p {
-    text-align: center;
-    color: #79515f;
-    margin-bottom: 35px;
-}
-
-.corridas {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
-
-.card {
-    padding: 25px;
+#tabela-container {
+    width: 100%;
+    padding: 20px;
     background-color: #ffffff;
     border-radius: 15px;
-    box-shadow: 0 3px 10px rgba(199, 125, 155, 0.2);
+    box-shadow: 0 3px 10px rgba(232, 169, 191, 0.20);
+    box-sizing: border-box;
+    overflow-x: auto;
 }
 
-.card h2 {
-    color: #c77d9b;
-    font-size: 21px;
-    margin-top: 0;
-}
-
-.card p {
-    color: #79515f;
-    line-height: 1.5;
-}
-
-.card button {
+table {
     width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 20px;
-    background-color: #f4c6d7;
+    border-collapse: collapse;
+    color: #8f5369;
+    font-size: 14px;
+}
+
+thead {
+    background-color: #f2c6d6;
+}
+
+th {
+    padding: 14px 10px;
+    text-align: left;
     color: #6f3d50;
+    font-weight: bold;
+    border-bottom: 2px solid #edbfd0;
+}
+
+td {
+    padding: 14px 10px;
+    border-bottom: 1px solid #f0d7e0;
+    color: #8f5369;
+}
+
+tbody tr:hover {
+    background-color: #fffafd;
+}
+
+.btnInscrever {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 15px;
+    background-color: #e8a9bf;
+    color: #ffffff;
+    font-size: 13px;
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
 }
 
-.card button:hover {
-    background-color: #e9afc4;
-    transform: translateY(-2px);
+.btnInscrever:hover {
+    background-color: #d98fa9;
+    transform: translateY(-1px);
 }
 
-@media (max-width: 800px) {
-    .corridas {
-        grid-template-columns: 1fr;
+.sem-corridas {
+    text-align: center;
+    padding: 30px;
+    color: #b56b88;
+    font-style: italic;
+}
+
+@media (max-width: 700px) {
+    #corridas {
+        width: 95%;
+        padding: 25px 15px;
+    }
+
+    #corridas h1 {
+        font-size: 25px;
+    }
+
+    #tabela-container {
+        padding: 10px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th,
+    td {
+        padding: 10px 6px;
     }
 }

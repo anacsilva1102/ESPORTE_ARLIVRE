@@ -7,102 +7,180 @@
     background-color: #fff7fa;
     box-sizing: border-box;
     border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(199, 125, 155, 0.12);
+    box-shadow: 0 4px 15px rgba(232, 169, 191, 0.12);
 }
 
 #atleta h1 {
     text-align: center;
-    color: #c77d9b;
+    color: #b56b88;
     margin-bottom: 30px;
     font-size: 30px;
 }
 
 #form-atleta {
-    width: 600px;
+    width: 750px;
     max-width: 100%;
     margin: 0 auto;
     padding: 30px;
     background-color: #ffffff;
     border-radius: 15px;
-    box-shadow: 0 3px 10px rgba(199, 125, 155, 0.2);
+    box-shadow: 0 3px 10px rgba(232, 169, 191, 0.20);
+    box-sizing: border-box;
 }
 
-#form-atleta label {
+#form-atleta > label {
     display: block;
     margin-bottom: 6px;
-    color: #79515f;
+    color: #8f5369;
     font-weight: bold;
+    font-size: 13px;
 }
 
-#form-atleta input:not(.btnSelecao),
+.linha {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+}
+
+.campo {
+    flex: 1;
+}
+
+.campo label {
+    display: block;
+    margin-bottom: 6px;
+    color: #8f5369;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+#form-atleta input:not([type="radio"]),
 #form-atleta select {
     width: 100%;
-    padding: 11px;
+    height: 40px;
+    padding: 10px;
     margin-bottom: 20px;
-    border: 1px solid #f0bfd0;
+    border: 1px solid #edbfd0;
     border-radius: 8px;
     box-sizing: border-box;
     outline: none;
-    color: #79515f;
-    background-color: #ffffff;
+    color: #8f5369;
+    background-color: #fffafd;
     transition: 0.3s;
+    font-size: 13px;
 }
 
-#form-atleta input:not(.btnSelecao):focus,
+#form-atleta input:not([type="radio"]):focus,
 #form-atleta select:focus {
-    border-color: #c77d9b;
-    box-shadow: 0 0 0 2px rgba(199, 125, 155, 0.1);
+    border-color: #d98fa9;
+    box-shadow: 0 0 0 2px rgba(217, 143, 169, 0.10);
 }
 
-#form-atleta .btnSelecao {
-    width: auto;
-    padding: 0;
-    margin: 0 5px 20px 15px;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
-    outline: none;
-    accent-color: #c77d9b;
-    vertical-align: middle;
+#form-atleta select {
+    cursor: pointer;
 }
 
-#form-atleta label[for="sexo"] {
-    margin-bottom: 10px;
+#form-atleta select:disabled {
+    background-color: #f8edf1;
+    color: #b58a99;
+    cursor: not-allowed;
 }
 
-#form-atleta button {
+.sexo-opcoes {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+.sexo-opcoes label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0;
+    color: #8f5369;
+    font-size: 13px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.sexo-opcoes input[type="radio"] {
+    accent-color: #d98fa9;
+    cursor: pointer;
+}
+
+#div-btns {
     width: 100%;
-    padding: 12px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+#div-btns button {
+    width: 180px;
+    height: 42px;
     border: none;
     border-radius: 20px;
-    background-color: #f4c6d7;
-    color: #6f3d50;
+    font-size: 14px;
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
 }
 
-#form-atleta button:hover {
-    background-color: #e9afc4;
-    transform: translateY(-2px);
-    box-shadow: 0 3px 8px rgba(199, 125, 155, 0.2);
+#btnAdd {
+    background-color: #e8a9bf;
+    color: #ffffff;
 }
 
-@media (max-width: 650px) {
-    #atleta {
-        padding: 25px 15px;
-    }
+#btnAdd:hover {
+    background-color: #d98fa9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(217, 143, 169, 0.25);
+}
 
-    #form-atleta {
-        padding: 20px;
+#btnLimpar {
+    background-color: #f2c6d6;
+    color: #6f3d50;
+}
+
+#btnLimpar:hover {
+    background-color: #e8a9bf;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 700px) {
+    #atleta {
+        width: 95%;
+        padding: 25px 15px;
     }
 
     #atleta h1 {
         font-size: 25px;
     }
 
-    #form-atleta .btnSelecao {
-        margin-left: 8px;
-        margin-right: 3px;
+    #form-atleta {
+        padding: 20px;
+    }
+
+    .linha {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .sexo-opcoes {
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    #div-btns {
+        flex-direction: column;
+    }
+
+    #div-btns button {
+        width: 100%;
     }
 }

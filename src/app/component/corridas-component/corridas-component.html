@@ -1,74 +1,67 @@
-<section class="pagina">
+<div id="corridas">
 
-    <h1>Corridas</h1>
+    <h1>Corridas Disponíveis</h1>
 
-    <p>Escolha uma corrida e faça sua inscrição.</p>
+    <div id="tabela-container">
 
-    <div class="corridas">
+        <table>
 
-        <div class="card">
+            <thead>
 
-            <h2>Corrida Esporte ArLivre</h2>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Data</th>
+                    <th>Distâncias</th>
+                    <th>Ação</th>
+                </tr>
 
-            <p><strong>Data:</strong> 20/09/2026</p>
+            </thead>
 
-            <p><strong>Local:</strong> São Paulo</p>
+            <tbody>
 
-            <p><strong>Distância:</strong> 5 km</p>
+                <tr *ngFor="let corrida of corridas">
 
-            <p>
-                Participe dessa corrida e faça parte
-                da comunidade Esporte ArLivre.
-            </p>
+                    <td>
+                        {{ corrida.descricao }}
+                    </td>
 
-            <button routerLink="/inscricoes">
-                Inscreva-se
-            </button>
+                    <td>
+                        {{ corrida.data }}
+                    </td>
 
-        </div>
+                    <td>
+                        {{ corrida.distancias }}
+                    </td>
 
-        <div class="card">
+                    <td>
 
-            <h2>Corrida ArLivre Kids</h2>
+                        <button
+                            type="button"
+                            class="btnInscrever"
+                            (click)="inscrever(corrida)">
+                            Inscrever-se
+                        </button>
 
-            <p><strong>Data:</strong> 04/10/2026</p>
+                    </td>
 
-            <p><strong>Local:</strong> São Paulo</p>
+                </tr>
 
-            <p><strong>Distância:</strong> 3 km</p>
+                <tr *ngIf="corridas.length === 0">
 
-            <p>
-                Uma corrida especial para incentivar
-                a prática esportiva.
-            </p>
+                    <td
+                        colspan="4"
+                        class="sem-corridas">
 
-            <button routerLink="/inscricoes">
-                Inscreva-se
-            </button>
+                        Nenhuma corrida cadastrada.
 
-        </div>
+                    </td>
 
-        <div class="card">
+                </tr>
 
-            <h2>Desafio ArLivre</h2>
+            </tbody>
 
-            <p><strong>Data:</strong> 18/10/2026</p>
-
-            <p><strong>Local:</strong> São Paulo</p>
-
-            <p><strong>Distância:</strong> 10 km</p>
-
-            <p>
-                Um desafio para quem quer superar
-                seus próprios limites.
-            </p>
-
-            <button routerLink="/inscricoes">
-                Inscreva-se
-            </button>
-
-        </div>
+        </table>
 
     </div>
 
-</section>
+</div>
