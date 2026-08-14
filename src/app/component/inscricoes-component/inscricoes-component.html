@@ -4,7 +4,8 @@
 
     <form
         id="form-inscricao"
-        (submit)="finalizarInscricao()">
+        (submit)="finalizarInscricao()"
+    >
 
         <div class="linha">
 
@@ -18,7 +19,9 @@
                     id="atleta"
                     name="atleta"
                     [(ngModel)]="inscricao.atleta"
-                    required>
+                    (change)="selecionarAtleta()"
+                    required
+                >
 
                     <option value="">
                         Selecione o atleta
@@ -26,7 +29,8 @@
 
                     <option
                         *ngFor="let atleta of atletas"
-                        [value]="atleta.nome">
+                        [value]="atleta.nome"
+                    >
 
                         {{ atleta.nome }}
 
@@ -47,7 +51,9 @@
                     id="cpf"
                     name="cpf"
                     [(ngModel)]="inscricao.cpf"
-                    placeholder="000.000.000-00">
+                    placeholder="000.000.000-00"
+                    readonly
+                >
 
             </div>
 
@@ -61,7 +67,8 @@
             id="corrida"
             name="corrida"
             [(ngModel)]="inscricao.corrida"
-            required>
+            required
+        >
 
             <option value="">
                 Selecione uma corrida
@@ -69,7 +76,8 @@
 
             <option
                 *ngFor="let corrida of corridas"
-                [value]="corrida.descricao">
+                [value]="corrida.descricao"
+            >
 
                 {{ corrida.descricao }}
 
@@ -89,7 +97,8 @@
                     type="radio"
                     name="distancia"
                     value="5km"
-                    [(ngModel)]="inscricao.distancia">
+                    [(ngModel)]="inscricao.distancia"
+                >
 
                 5 km
 
@@ -101,7 +110,8 @@
                     type="radio"
                     name="distancia"
                     value="10km"
-                    [(ngModel)]="inscricao.distancia">
+                    [(ngModel)]="inscricao.distancia"
+                >
 
                 10 km
 
@@ -113,7 +123,8 @@
                     type="radio"
                     name="distancia"
                     value="25km"
-                    [(ngModel)]="inscricao.distancia">
+                    [(ngModel)]="inscricao.distancia"
+                >
 
                 25 km
 
@@ -133,16 +144,28 @@
                     id="camiseta"
                     name="camiseta"
                     [(ngModel)]="inscricao.camiseta"
-                    required>
+                    required
+                >
 
                     <option value="">
                         Selecione
                     </option>
 
-                    <option value="P">P</option>
-                    <option value="M">M</option>
-                    <option value="G">G</option>
-                    <option value="GG">GG</option>
+                    <option value="P">
+                        P
+                    </option>
+
+                    <option value="M">
+                        M
+                    </option>
+
+                    <option value="G">
+                        G
+                    </option>
+
+                    <option value="GG">
+                        GG
+                    </option>
 
                 </select>
 
@@ -159,7 +182,9 @@
                     id="categoria"
                     name="categoria"
                     [(ngModel)]="inscricao.categoria"
-                    placeholder="Ex: 30-39 anos">
+                    placeholder="Ex: 30-39 anos"
+                    required
+                >
 
             </div>
 
@@ -183,7 +208,8 @@
                 type="checkbox"
                 name="termos"
                 [(ngModel)]="inscricao.termos"
-                required>
+                required
+            >
 
             Li e aceito os termos do regulamento da prova.
 
@@ -193,7 +219,8 @@
 
             <button
                 type="submit"
-                id="btnFinalizar">
+                id="btnFinalizar"
+            >
 
                 Finalizar e Ir para Pagamento
 

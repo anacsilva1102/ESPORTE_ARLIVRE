@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-corridas-component',
@@ -12,23 +13,15 @@ export class CorridasComponent {
 
     corridas: any[] = [];
 
-
-    ngOnInit() {
-
+    constructor(private router: Router) {
         this.carregarCorridas();
-
     }
-
 
     carregarCorridas() {
-
-        this.corridas =
-            JSON.parse(
-                localStorage.getItem('corridas') || '[]'
-            );
-
+        this.corridas = JSON.parse(
+            localStorage.getItem('corridas') || '[]'
+        );
     }
-
 
     inscrever(corrida: any) {
 
@@ -37,9 +30,7 @@ export class CorridasComponent {
             JSON.stringify(corrida)
         );
 
-        alert(
-            'Corrida selecionada! Vá para a tela de inscrição.'
-        );
+        this.router.navigateByUrl('/inscricoes');
 
     }
 

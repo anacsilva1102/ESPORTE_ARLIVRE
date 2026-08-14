@@ -1,23 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-inscricoes-component',
     standalone: true,
-    imports: [
-        FormsModule,
-        CommonModule
-    ],
+    imports: [CommonModule, FormsModule],
     templateUrl: './inscricoes-component.html',
     styleUrl: './inscricoes-component.css'
 })
-export class InscricoesComponent implements OnInit {
+export class InscricoesComponent {
 
     atletas: any[] = [];
 
     corridas: any[] = [];
 
+    corridaSelecionada: any = null;
 
     inscricao = {
         atleta: '',
@@ -29,92 +27,85 @@ export class InscricoesComponent implements OnInit {
         termos: false
     };
 
-
-    ngOnInit() {
-
-        this.carregarAtletas();
-
-        this.carregarCorridas();
-
+    constructor() {
+        this.carregarDados();
     }
 
+    carregarDados() {
 
-    carregarAtletas() {
+        this.atletas = JSON.parse(
+            localStorage.getItem('atletas') || '[]'
+        );
 
-        this.atletas =
-            JSON.parse(
-                localStorage.getItem('atletas') || '[]'
-            );
+        this.corridas = JSON.parse(
+            localStorage.getItem('corridas') || '[]'
+        );
 
+        const corridaSalva = localStorage.getItem(
+            'corridaSelecionada'
+        );
+
+        if (corridaSalva) {
+
+            this.corridaSelecionada =
+                JSON.parse(corridaSalva);
+
+            this.inscricao.corrida =
+                this.corridaSelecionada.descricao;
+        }
     }
 
+    selecionarAtleta() {
 
-    carregarCorridas() {
+        const atletaSelecionado = this.atletas.find(
+            atleta =>
+                atleta.nome === this.inscricao.atleta
+        );
 
-        this.corridas =
-            JSON.parse(
-                localStorage.getItem('corridas') || '[]'
-            );
+        if (atletaSelecionado) {
 
+            this.inscricao.cpf =
+                atletaSelecionado.cpf;
+
+        } else {
+
+            this.inscricao.cpf = '';
+
+        }
     }
-
 
     finalizarInscricao() {
 
         if (
             !this.inscricao.atleta ||
+            !this.inscricao.cpf ||
             !this.inscricao.corrida ||
             !this.inscricao.distancia ||
             !this.inscricao.camiseta ||
-            !this.inscricao.categoria
+            !this.inscricao.categoria ||
+            !this.inscricao.termos
         ) {
+
             alert('Preencha todos os campos!');
-            return;
-        }
-
-
-        if (!this.inscricao.termos) {
-
-            alert(
-                'Você precisa aceitar os termos do regulamento.'
-            );
 
             return;
         }
 
+        const inscricoes = JSON.parse(
+            localStorage.getItem('inscricoes') || '[]'
+        );
 
-        const inscricoes =
-            JSON.parse(
-                localStorage.getItem('inscricoes') || '[]'
-            );
-
-
-        inscricoes.push({
-            atleta: this.inscricao.atleta,
-            cpf: this.inscricao.cpf,
-            corrida: this.inscricao.corrida,
-            distancia: this.inscricao.distancia,
-            camiseta: this.inscricao.camiseta,
-            categoria: this.inscricao.categoria,
-            valor: 89.90
-        });
-
+        inscricoes.push(this.inscricao);
 
         localStorage.setItem(
             'inscricoes',
             JSON.stringify(inscricoes)
         );
 
-
-        alert(
-            'Inscrição realizada com sucesso!'
-        );
-
+        alert('Inscrição realizada com sucesso!');
 
         this.limparFormulario();
-
     }
-
 
     limparFormulario() {
 
@@ -128,6 +119,10 @@ export class InscricoesComponent implements OnInit {
             termos: false
         };
 
-    }
+        this.corridaSelecionada = null;
 
+        localStorage.removeItem(
+            'corridaSelecionada'
+        );
+    }
 }

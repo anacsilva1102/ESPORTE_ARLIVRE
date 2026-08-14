@@ -7,29 +7,41 @@ import { CorridasComponent } from './component/corridas-component/corridas-compo
 import { InscricoesComponent } from './component/inscricoes-component/inscricoes-component';
 
 export const routes: Routes = [
-    {
-        path: '',
-        redirectTo: '/home',
-        pathMatch: 'full'
-    },
+
     {
         path: 'home',
         component: HomeComponent
     },
+
     {
         path: 'cadastroatleta',
         component: AtletaComponent
     },
+
     {
         path: 'cadastrocorridas',
         component: CorridaComponent
     },
+
     {
         path: 'corridas',
         component: CorridasComponent
     },
+
     {
         path: 'inscricoes',
         component: InscricoesComponent
+    },
+
+    {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full'
+    },
+
+    {
+        path: '**',
+        redirectTo: 'home'
     }
+
 ];

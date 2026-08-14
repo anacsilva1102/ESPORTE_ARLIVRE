@@ -2,87 +2,103 @@
     width: 1000px;
     max-width: 95%;
     min-height: 500px;
+
     margin: 30px auto;
     padding: 40px;
+
     background-color: #fff7fa;
+
     box-sizing: border-box;
+
     border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(232, 169, 191, 0.12);
+
+    box-shadow:
+        0 4px 15px rgba(232, 169, 191, 0.12);
 }
 
 #corridas h1 {
     text-align: center;
+
     color: #b56b88;
+
     margin-bottom: 30px;
+
     font-size: 30px;
 }
 
-#tabela-container {
-    width: 100%;
-    padding: 20px;
+.corrida {
+    width: 750px;
+    max-width: 100%;
+
+    margin: 0 auto 20px;
+    padding: 25px 30px;
+
     background-color: #ffffff;
+
     border-radius: 15px;
-    box-shadow: 0 3px 10px rgba(232, 169, 191, 0.20);
+
+    box-shadow:
+        0 3px 10px rgba(232, 169, 191, 0.20);
+
     box-sizing: border-box;
-    overflow-x: auto;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
+.corrida h2 {
+    margin: 0 0 15px;
+
+    color: #b56b88;
+
+    font-size: 21px;
+}
+
+.corrida p {
+    margin: 8px 0;
+
     color: #8f5369;
+
     font-size: 14px;
 }
 
-thead {
-    background-color: #f2c6d6;
-}
+.corrida button {
+    display: block;
 
-th {
-    padding: 14px 10px;
-    text-align: left;
-    color: #6f3d50;
-    font-weight: bold;
-    border-bottom: 2px solid #edbfd0;
-}
+    width: 180px;
 
-td {
-    padding: 14px 10px;
-    border-bottom: 1px solid #f0d7e0;
-    color: #8f5369;
-}
+    height: 42px;
 
-tbody tr:hover {
-    background-color: #fffafd;
-}
+    margin: 20px auto 0;
 
-.btnInscrever {
-    padding: 8px 14px;
     border: none;
-    border-radius: 15px;
+
+    border-radius: 20px;
+
     background-color: #e8a9bf;
+
     color: #ffffff;
-    font-size: 13px;
+
+    font-size: 14px;
+
     font-weight: bold;
+
     cursor: pointer;
+
     transition: 0.3s;
 }
 
-.btnInscrever:hover {
+.corrida button:hover {
     background-color: #d98fa9;
-    transform: translateY(-1px);
-}
 
-.sem-corridas {
-    text-align: center;
-    padding: 30px;
-    color: #b56b88;
-    font-style: italic;
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 4px 8px rgba(217, 143, 169, 0.25);
 }
 
 @media (max-width: 700px) {
+
     #corridas {
         width: 95%;
+
         padding: 25px 15px;
     }
 
@@ -90,16 +106,12 @@ tbody tr:hover {
         font-size: 25px;
     }
 
-    #tabela-container {
-        padding: 10px;
+    .corrida {
+        padding: 20px;
     }
 
-    table {
-        font-size: 12px;
+    .corrida button {
+        width: 100%;
     }
 
-    th,
-    td {
-        padding: 10px 6px;
-    }
 }

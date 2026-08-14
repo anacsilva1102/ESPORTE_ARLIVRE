@@ -2,65 +2,29 @@
 
     <h1>Corridas Disponíveis</h1>
 
-    <div id="tabela-container">
+    <div
+        class="corrida"
+        *ngFor="let corrida of corridas"
+    >
 
-        <table>
+        <h2>
+            {{ corrida.descricao }}
+        </h2>
 
-            <thead>
+        <p>
+            Data: {{ corrida.data }}
+        </p>
 
-                <tr>
-                    <th>Descrição</th>
-                    <th>Data</th>
-                    <th>Distâncias</th>
-                    <th>Ação</th>
-                </tr>
+        <p>
+            Distâncias: {{ corrida.distancias }}
+        </p>
 
-            </thead>
-
-            <tbody>
-
-                <tr *ngFor="let corrida of corridas">
-
-                    <td>
-                        {{ corrida.descricao }}
-                    </td>
-
-                    <td>
-                        {{ corrida.data }}
-                    </td>
-
-                    <td>
-                        {{ corrida.distancias }}
-                    </td>
-
-                    <td>
-
-                        <button
-                            type="button"
-                            class="btnInscrever"
-                            (click)="inscrever(corrida)">
-                            Inscrever-se
-                        </button>
-
-                    </td>
-
-                </tr>
-
-                <tr *ngIf="corridas.length === 0">
-
-                    <td
-                        colspan="4"
-                        class="sem-corridas">
-
-                        Nenhuma corrida cadastrada.
-
-                    </td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
+        <button
+            type="button"
+            (click)="inscrever(corrida)"
+        >
+            Inscrever-se
+        </button>
 
     </div>
 

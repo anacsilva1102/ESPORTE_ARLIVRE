@@ -2,15 +2,16 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import { MenuComponent } from './component/menu-component/menu-component';
-import { AtletaComponent } from './component/atleta-component/atleta-component';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, MenuComponent, AtletaComponent],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    standalone: true,
+    imports: [RouterOutlet, MenuComponent],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css'
 })
 export class AppComponent {
-  protected readonly title = signal('esporte_arlivre');
+
+    protected readonly title = signal('esporte_arlivre');
+
 }
