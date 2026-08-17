@@ -1,0 +1,135 @@
+#lista-atleta {
+    width: 1000px;
+    max-width: 95%;
+    min-height: 500px;
+    margin: 30px auto;
+    padding: 40px;
+    background-color: #fff7fa;
+    box-sizing: border-box;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(232, 169, 191, 0.12);
+}
+
+#lista-atleta h1 {
+    text-align: center;
+    color: #b56b88;
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+
+#tabela-atletas {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(232, 169, 191, 0.20);
+    overflow: hidden;
+    border-collapse: collapse;
+}
+
+#tabela-atletas thead {
+    background-color: #e8a9bf;
+    color: #ffffff;
+}
+
+#tabela-atletas th {
+    padding: 15px 10px;
+    font-size: 13px;
+    text-align: center;
+}
+
+#tabela-atletas td {
+    padding: 13px 10px;
+    color: #8f5369;
+    font-size: 13px;
+    text-align: center;
+    border-bottom: 1px solid #f3d5df;
+}
+
+#tabela-atletas tbody tr:hover {
+    background-color: #fff7fa;
+}
+
+#tabela-atletas tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.btn-excluir {
+    width: 90px;
+    height: 35px;
+    border: none;
+    border-radius: 20px;
+    background-color: #f2c6d6;
+    color: #6f3d50;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-excluir:hover {
+    background-color: #d98fa9;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(217, 143, 169, 0.25);
+}
+
+.sem-atletas {
+    text-align: center;
+    padding: 40px;
+    color: #8f5369;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 3px 10px rgba(232, 169, 191, 0.20);
+}
+
+.sem-atletas p {
+    margin: 0;
+    font-size: 15px;
+}
+
+@media (max-width: 900px) {
+
+    #lista-atleta {
+        width: 95%;
+        padding: 25px 15px;
+    }
+
+    #lista-atleta h1 {
+        font-size: 25px;
+    }
+
+    #tabela-atletas {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    #tabela-atletas th,
+    #tabela-atletas td {
+        padding: 12px 8px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    #lista-atleta {
+        padding: 20px 10px;
+    }
+
+    #lista-atleta h1 {
+        font-size: 22px;
+    }
+
+    #tabela-atletas th,
+    #tabela-atletas td {
+        font-size: 11px;
+    }
+
+    .btn-excluir {
+        width: 75px;
+        height: 32px;
+        font-size: 11px;
+    }
+
+}

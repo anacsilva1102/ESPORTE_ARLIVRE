@@ -1,0 +1,74 @@
+<section id="section-list-atleta">
+
+    <h2>Lista de Atletas</h2>
+  
+    <div class="lista-atletas">
+  
+      @for (atleta of listaAtletas; track atleta.id) {
+  
+        <div class="card-atleta">
+  
+          <span>
+            <strong>ID:</strong>
+            {{ atleta.id }}
+          </span>
+  
+          <span>
+            <strong>Nome:</strong>
+            {{ atleta.nome }}
+          </span>
+  
+          <span>
+            <strong>CPF:</strong>
+            {{ atleta.cpf }}
+          </span>
+  
+          <span>
+            <strong>Sexo:</strong>
+            {{ atleta.sexo }}
+          </span>
+  
+          <span>
+            <strong>CEP:</strong>
+            {{ atleta.cep }}
+          </span>
+  
+          <span>
+            <strong>Rua:</strong>
+            {{ atleta.rua }}
+          </span>
+  
+          <span>
+            <strong>Bairro:</strong>
+            {{ atleta.bairro }}
+          </span>
+  
+          <span>
+            <strong>Município:</strong>
+            {{ atleta.municipio }}
+          </span>
+  
+          <span>
+            <strong>UF:</strong>
+            {{ atleta.uf }}
+          </span>
+  
+          <button
+            type="button"
+            (click)="excluir(atleta.id)">
+            Excluir
+          </button>
+  
+        </div>
+  
+      } @empty {
+  
+        <div class="nenhum-atleta">
+          Nenhum atleta cadastrado.
+        </div>
+  
+      }
+  
+    </div>
+  
+  </section>
