@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AtletaService } from '../../service/atleta.service';
 
 @Component({
     selector: 'app-atleta-component',
@@ -10,6 +11,9 @@ import { CommonModule } from '@angular/common';
     styleUrl: './atleta-component.css'
 })
 export class AtletaComponent {
+
+    constructor(private atletaService: AtletaService) { }
+
 
     estados = [
         { nome: 'Acre', uf: 'AC' },
@@ -41,9 +45,11 @@ export class AtletaComponent {
         { nome: 'Tocantins', uf: 'TO' }
     ];
 
+
     municipios: any[] = [];
 
     carregandoMunicipios = false;
+
 
     atleta = {
         nome: '',
@@ -114,25 +120,27 @@ export class AtletaComponent {
         }
 
 
-        const atletas =
-            JSON.parse(
-                localStorage.getItem('atletas') || '[]'
-            );
+        this.atletaService.salvarAtleta(this.atleta).subscribe({
 
+            next: (resposta) => {
 
-        atletas.push(this.atleta);
+                console.log('Atleta cadastrado:', resposta);
 
+                alert('Atleta cadastrado com sucesso!');
 
-        localStorage.setItem(
-            'atletas',
-            JSON.stringify(atletas)
-        );
+                this.limparFormulario();
 
+            },
 
-        alert('Atleta cadastrado com sucesso!');
+            error: (erro) => {
 
+                console.error('Erro ao cadastrar atleta:', erro);
 
-        this.limparFormulario();
+                alert('Erro ao cadastrar atleta.');
+
+            }
+
+        });
 
     }
 
