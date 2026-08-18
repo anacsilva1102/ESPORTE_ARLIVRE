@@ -12,74 +12,63 @@ import { Atleta } from '../../models/atleta';
   styleUrl: './atleta-component.css'
 })
 export class AtletaComponent {
+  //DECLARANDO ATIBUTOS
+  nome = ''
+  cpf = 0
+  sexo = ''
+  cep = 0
+  ruaLogradouro = ''
+  bairro = ''
+  cidade = ''
+  uf = ''
 
-  // ATRIBUTOS
-  nome = '';
-  cpf = 0;
-  sexo = '';
-  cep = 0;
-  ruaLogradouro = '';
-  bairro = '';
-  cidade = '';
-  uf = '';
+  //DECLARAÇÃO DO CONSTRUTOR
+  constructor(private atletaService: AtletaService) { }
 
-  // CONSTRUTOR
-  constructor(private atletaService: AtletaService) {}
-
-  // EXIBIR DADOS
+  //DECLARAÇÃO DE FUNÇÕES
   exibirDados() {
-    console.log(
-      this.nome,
-      this.cpf,
-      this.sexo,
-      this.cep,
-      this.ruaLogradouro,
-      this.bairro,
-      this.cidade,
-      this.uf
-    );
+    console.log(this.nome, this.cpf, this.sexo, this.cep, this.ruaLogradouro, this.bairro, this.cidade, this.uf)
 
-    this.limparDados();
+    this.limparDados()
   }
 
-  // LIMPAR DADOS
   limparDados() {
-    this.nome = '';
-    this.cpf = 0;
-    this.sexo = '';
-    this.cep = 0;
-    this.ruaLogradouro = '';
-    this.bairro = '';
-    this.cidade = '';
-    this.uf = '';
+    this.nome = ''
+    this.cpf = 0
+    this.sexo = ''
+    this.cep = 0
+    this.ruaLogradouro = ''
+    this.bairro = ''
+    this.cidade = ''
+    this.uf = ''
   }
 
-  // SALVAR ATLETA
-  salvar() {
-
-    const atleta = new Atleta();
-
-    atleta.nome = this.nome;
-    atleta.cpf = this.cpf;
-    atleta.sexo = this.sexo;
-    atleta.cep = this.cep;
-    atleta.ruaLogradouro = this.ruaLogradouro;
-    atleta.bairro = this.bairro;
-    atleta.cidade = this.cidade;
-    atleta.uf = this.uf;
-
-    this.atletaService.salvarAtleta(atleta).subscribe({
-      next: (resposta) => {
-        console.log(resposta);
+  enviarDadosAtleta(){
+    const atleta = new Atleta()
+    atleta.nome = this.nome
+    atleta.cpf = this.cpf
+    atleta.sexo = this.sexo
+    atleta.cep = this.cep
+    atleta.ruaLogradouro = this.ruaLogradouro
+    atleta.bairro = this.bairro
+    atleta.cidade = this.cidade
+    atleta.uf  = this.uf
+    
+    this.atletaService.salvarAtleta(atleta)
+    .subscribe({
+      next: (resposta)=>{
+        console.log( resposta)
       },
-
-      error: (msgErro) => {
-        console.log(msgErro);
+      error:(msgErro)=>{
+        console.log( msgErro)
       }
-    });
+    })
+    
+    this.limparDados()   
 
-    this.limparDados();
-
-    this.atletaService.listarAtletas();
+    this.atletaService.listarAtletas()
+    
   }
+
+
 }
