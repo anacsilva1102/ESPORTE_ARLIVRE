@@ -10,31 +10,161 @@
     height: 100%;
 }
 
-#cabecalho {
+#cabecalho {A#cabecalho,
+    #ul-menu,
+    #logo {
+        display: flex;
+        align-items: center;
+    }
+    
+    #ul-menu,
+    #logo {
+        height: 100%;
+    }
+    
+    #cabecalho {
+        width: 1000px;
+        height: 100px;
+        margin: 20px auto;
+        padding: 20px 25px;
+    
+        background-color: #FFF5F8;
+        justify-content: space-between;
+        color: #5C1832;
+    
+        border: 2px solid #F8B4C8;
+        border-radius: 15px;
+    
+        box-shadow: 0px 5px 18px rgba(201, 47, 104, 0.18);
+    }
+    
+    #logo {
+        width: 30%;
+        font-size: 26px;
+        font-weight: bold;
+        white-space: nowrap;
+    }
+    
+    #titulo-logo {
+        color: #C92F68;
+        border: 2px solid #E94F87;
+    
+        margin: 0px 10px;
+        padding: 5px 12px;
+    
+        border-radius: 8px;
+        background-color: #FFFFFF;
+    }
+    
+    #menu {
+        width: 70%;
+    }
+    
+    #ul-menu {
+        list-style: none;
+        justify-content: right;
+        gap: 5px;
+    }
+    
+    .lnk-menu {
+        display: block;
+    
+        color: #5C1832;
+        text-decoration: none;
+    
+        margin: 0px 3px;
+        padding: 10px 12px;
+    
+        transition: 0.3s ease;
+    
+        font-size: 16px;
+        font-weight: bold;
+    
+        border-radius: 20px;
+        white-space: nowrap;
+    }
+    
+    .lnk-menu:hover {
+        background-color: #E94F87;
+        color: #FFFFFF;
+    
+        box-shadow: 0px 4px 10px rgba(201, 47, 104, 0.25);
+    }
+    
+    @media (max-width: 1050px) {
+    
+        #cabecalho {
+            width: 95%;
+        }
+    
+        #logo {
+            font-size: 23px;
+        }
+    
+        .lnk-menu {
+            font-size: 15px;
+            padding: 9px 10px;
+        }
+    }
+    
+    @media (max-width: 800px) {
+    
+        #cabecalho {
+            width: 95%;
+            height: auto;
+            min-height: 100px;
+    
+            flex-direction: column;
+            gap: 15px;
+        }
+    
+        #logo {
+            width: 100%;
+            justify-content: center;
+        }
+    
+        #menu {
+            width: 100%;
+        }
+    
+        #ul-menu {
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    
+        .lnk-menu {
+            font-size: 14px;
+            padding: 8px 10px;
+        }
+    }
     width: 1000px;
     height: 100px;
     margin: 20px auto;
-    padding: 25px;
-    background-color: #fff7fa;
+    padding: 20px 25px;
+    background-color: #fff8f9;
     justify-content: space-between;
-    color: #79515f;
-    border-bottom: 1px solid #f0bfd0;
-    box-shadow: 0 3px 10px rgba(199, 125, 155, 0.15);
-    border-radius: 5px;
+    color: #704554;
+    border: 1px solid #e8c3ce;
+    border-radius: 15px;
+    box-shadow: 0px 5px 18px rgba(157, 87, 110, 0.15);
 }
 
 #logo {
     width: 30%;
-    font-size: 25px;
+    font-size: 26px;
+    font-weight: 500;
     white-space: nowrap;
+    color: #704554;
 }
 
 #titulo-logo {
-    color: #6f3d50;
-    border: 1px solid #f0bfd0;
+    color: #a85d78;
+    border: 1px solid #d99aae;
     margin: 0px 10px;
-    padding: 5px 10px;
-    border-radius: 3px;
+    padding: 5px 12px;
+    border-radius: 8px;
+    background-color: #fff0f4;
+    font-weight: bold;
 }
 
 #menu {
@@ -49,17 +179,66 @@
 
 .lnk-menu {
     display: block;
-    color: #79515f;
+    color: #704554;
     text-decoration: none;
-    margin: 0px 5px;
+    margin: 0px 3px;
     padding: 10px 12px;
     transition: 0.3s ease;
-    font-size: 17px;
+    font-size: 16px;
+    font-weight: bold;
     border-radius: 20px;
     white-space: nowrap;
 }
 
 .lnk-menu:hover {
-    background-color: #f4c6d7;
-    color: #6f3d50;
+    background-color: #f3c6d4;
+    color: #713b4d;
+    box-shadow: 0px 3px 8px rgba(168, 93, 120, 0.20);
+}
+
+@media (max-width: 1050px) {
+
+    #cabecalho {
+        width: 95%;
+    }
+
+    #logo {
+        font-size: 23px;
+    }
+
+    .lnk-menu {
+        font-size: 15px;
+        padding: 9px 10px;
+    }
+}
+
+@media (max-width: 800px) {
+
+    #cabecalho {
+        width: 95%;
+        height: auto;
+        min-height: 100px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #logo {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #menu {
+        width: 100%;
+    }
+
+    #ul-menu {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .lnk-menu {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
 }

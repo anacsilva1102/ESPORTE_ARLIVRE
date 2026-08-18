@@ -3,23 +3,41 @@
     min-height: 550px;
     margin: 20px auto;
     padding: 25px;
-    color: #79515f;
+
+    color: #5C1832;
     font-size: 20px;
+
+    background-color: #FFF5F8;
+    border: 2px solid #F8B4C8;
+    border-radius: 15px;
+
+    box-shadow: 0px 5px 18px rgba(201, 47, 104, 0.15);
 }
 
 .atleta-item {
     width: 100%;
     min-height: 35px;
+
     padding: 10px 15px;
     margin: 20px 0px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    border: 1px solid #F8B4C8;
     border-radius: 10px;
+
+    background-color: #FFFFFF;
+
+    transition: 0.3s ease;
 }
 
 .atleta-item:hover {
-    background-color: #fff7fa;
+    background-color: #FFDCE7;
+    border-color: #E94F87;
+
+    box-shadow: 0px 3px 8px rgba(201, 47, 104, 0.15);
 }
 
 .span-dados-atleta {
@@ -30,6 +48,7 @@
 .span-lnk-atletas {
     width: 10%;
     height: 100%;
+
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -39,12 +58,18 @@
     text-decoration: none;
     cursor: pointer;
     font-weight: bold;
+
+    transition: 0.3s ease;
 }
 
 .lnk-alterar {
-    color: #6f3d50;
+    color: #E94F87;
 }
 
 .lnk-excluir {
-    color: #f4c6d7;
+    color: #8F2149;
+}
+
+.lnk-atleta:hover {
+    opacity: 0.6;
 }

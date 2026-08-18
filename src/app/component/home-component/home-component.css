@@ -3,24 +3,34 @@
     height: 650px;
     margin: 20px auto;
     padding: 25px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     font-size: 60px;
-    border: 1px solid #f0bfd0;
-    background-color: #fff7fa;
+
+    background-color: #FFF5F8;
+    border: 2px solid #F8B4C8;
+    border-radius: 15px;
+
+    box-shadow: 0px 5px 18px rgba(201, 47, 104, 0.15);
 }
 
 #titulo-esporte {
-    color: #6f3d50;
+    color: #C92F68;
     margin: 0px;
     letter-spacing: 5px;
 }
 
 #titulo-arlivre {
-    border: 1px solid #f0bfd0;
+    border: 2px solid #E94F87;
     padding: 10px 25px;
-    color: #79515f;
+
+    color: #8F2149;
+
     font-weight: bold;
     border-radius: 1000px;
+
+    background-color: #FFFFFF;
 }
