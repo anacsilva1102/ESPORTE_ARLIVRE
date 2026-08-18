@@ -1,85 +1,76 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Atleta } from '../../models/atleta';
 import { AtletaService } from '../../service/atleta.service';
 import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-atleta-list-component',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './atleta-list-component.html',
-  styleUrl: './atleta-list-component.css'
+  styleUrl: './atleta-list-component.css',
 })
-export class AtletaListComponent implements OnInit {
+export class AtletaListComponent {
 
-  listaAtletas: Atleta[] = [];
+  listaAtletas = signal<Atleta[]>([]);
 
   constructor(
     private listaService: AtletaService,
     private router: Router
-  ) { }
+  ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.listar();
   }
 
   listar() {
+    this.listaService.listarAtletas()
+      .subscribe({
+        next: (dadosAtletas) => {
 
-    this.listaService.listarAtletas().subscribe({
+          this.listaAtletas.set(
+            [...dadosAtletas].sort((a, b) =>
+              a.nome.localeCompare(b.nome)
+            )
+          );
 
-      next: (dadosAtletas) => {
+          console.table(this.listaAtletas());
+        },
 
-        this.listaAtletas = [...dadosAtletas];
-
-        this.listaAtletas.sort((a, b) =>
-          a.nome.localeCompare(b.nome)
-        );
-
-        console.log(this.listaAtletas);
-
-      },
-
-      error: (msgErro) => {
-
-        console.log('Erro ao listar Atletas', msgErro);
-
-      }
-
-    });
-
+        error: (msgErro) => {
+          console.log('Erro ao listar Atletas ', msgErro);
+        }
+      });
   }
 
-  excluir(idAtleta: number | undefined) {
+  excluir(id: number) {
+    if (confirm('Deseja Excluir o Atleta?')) {
 
-    if (idAtleta === undefined) {
-      return;
+      this.listaService.excluirAtleta(id)
+        .subscribe({
+          next: (resposta) => {
+            console.log(
+              'Excluído com Sucesso!!! ',
+              resposta
+            );
+
+            this.listar();
+          },
+
+          error: (msgErro) => {
+            console.log(
+              'Erro ao excluir Atleta ',
+              msgErro
+            );
+          }
+        });
     }
-
-    if (!confirm('Deseja realmente excluir este atleta?')) {
-      return;
-    }
-
-    this.listaService.excluirAtleta(idAtleta).subscribe({
-
-      next: () => {
-
-        alert('Atleta excluído com sucesso!');
-
-        this.listar();
-
-      },
-
-      error: (erro) => {
-
-        console.error('Erro ao excluir atleta:', erro);
-
-        alert('Erro ao excluir atleta.');
-
-      }
-
-    });
-
   }
 
+  carregaDadosAtletaForm(atleta: Atleta) {
+    this.router.navigate([
+      '/cadastroAtleta',
+      atleta.id
+    ]);
+  }
 }

@@ -1,165 +1,85 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+
 import { AtletaService } from '../../service/atleta.service';
+import { Atleta } from '../../models/atleta';
 
 @Component({
-    selector: 'app-atleta-component',
-    standalone: true,
-    imports: [FormsModule, CommonModule],
-    templateUrl: './atleta-component.html',
-    styleUrl: './atleta-component.css'
+  selector: 'app-atleta-component',
+  standalone: true,
+  imports: [FormsModule],
+  templateUrl: './atleta-component.html',
+  styleUrl: './atleta-component.css'
 })
 export class AtletaComponent {
 
-    constructor(private atletaService: AtletaService) { }
+  // ATRIBUTOS
+  nome = '';
+  cpf = 0;
+  sexo = '';
+  cep = 0;
+  ruaLogradouro = '';
+  bairro = '';
+  cidade = '';
+  uf = '';
 
+  // CONSTRUTOR
+  constructor(private atletaService: AtletaService) {}
 
-    estados = [
-        { nome: 'Acre', uf: 'AC' },
-        { nome: 'Alagoas', uf: 'AL' },
-        { nome: 'Amapá', uf: 'AP' },
-        { nome: 'Amazonas', uf: 'AM' },
-        { nome: 'Bahia', uf: 'BA' },
-        { nome: 'Ceará', uf: 'CE' },
-        { nome: 'Distrito Federal', uf: 'DF' },
-        { nome: 'Espírito Santo', uf: 'ES' },
-        { nome: 'Goiás', uf: 'GO' },
-        { nome: 'Maranhão', uf: 'MA' },
-        { nome: 'Mato Grosso', uf: 'MT' },
-        { nome: 'Mato Grosso do Sul', uf: 'MS' },
-        { nome: 'Minas Gerais', uf: 'MG' },
-        { nome: 'Pará', uf: 'PA' },
-        { nome: 'Paraíba', uf: 'PB' },
-        { nome: 'Paraná', uf: 'PR' },
-        { nome: 'Pernambuco', uf: 'PE' },
-        { nome: 'Piauí', uf: 'PI' },
-        { nome: 'Rio de Janeiro', uf: 'RJ' },
-        { nome: 'Rio Grande do Norte', uf: 'RN' },
-        { nome: 'Rio Grande do Sul', uf: 'RS' },
-        { nome: 'Rondônia', uf: 'RO' },
-        { nome: 'Roraima', uf: 'RR' },
-        { nome: 'Santa Catarina', uf: 'SC' },
-        { nome: 'São Paulo', uf: 'SP' },
-        { nome: 'Sergipe', uf: 'SE' },
-        { nome: 'Tocantins', uf: 'TO' }
-    ];
+  // EXIBIR DADOS
+  exibirDados() {
+    console.log(
+      this.nome,
+      this.cpf,
+      this.sexo,
+      this.cep,
+      this.ruaLogradouro,
+      this.bairro,
+      this.cidade,
+      this.uf
+    );
 
+    this.limparDados();
+  }
 
-    municipios: any[] = [];
+  // LIMPAR DADOS
+  limparDados() {
+    this.nome = '';
+    this.cpf = 0;
+    this.sexo = '';
+    this.cep = 0;
+    this.ruaLogradouro = '';
+    this.bairro = '';
+    this.cidade = '';
+    this.uf = '';
+  }
 
-    carregandoMunicipios = false;
+  // SALVAR ATLETA
+  salvar() {
 
+    const atleta = new Atleta();
 
-    atleta = {
-        nome: '',
-        cpf: '',
-        sexo: '',
-        cep: '',
-        rua: '',
-        bairro: '',
-        municipio: '',
-        uf: ''
-    };
+    atleta.nome = this.nome;
+    atleta.cpf = this.cpf;
+    atleta.sexo = this.sexo;
+    atleta.cep = this.cep;
+    atleta.ruaLogradouro = this.ruaLogradouro;
+    atleta.bairro = this.bairro;
+    atleta.cidade = this.cidade;
+    atleta.uf = this.uf;
 
+    this.atletaService.salvarAtleta(atleta).subscribe({
+      next: (resposta) => {
+        console.log(resposta);
+      },
 
-    async carregarMunicipios() {
+      error: (msgErro) => {
+        console.log(msgErro);
+      }
+    });
 
-        this.municipios = [];
+    this.limparDados();
 
-        this.atleta.municipio = '';
-
-        if (!this.atleta.uf) {
-            return;
-        }
-
-        this.carregandoMunicipios = true;
-
-        try {
-
-            const resposta = await fetch(
-                `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${this.atleta.uf}/municipios`
-            );
-
-            if (!resposta.ok) {
-                throw new Error('Erro ao buscar municípios');
-            }
-
-            this.municipios = await resposta.json();
-
-        } catch (erro) {
-
-            console.error(erro);
-
-            alert('Não foi possível carregar os municípios.');
-
-        } finally {
-
-            this.carregandoMunicipios = false;
-
-        }
-    }
-
-
-    cadastrarAtleta() {
-
-        if (
-            !this.atleta.nome ||
-            !this.atleta.cpf ||
-            !this.atleta.sexo ||
-            !this.atleta.cep ||
-            !this.atleta.rua ||
-            !this.atleta.bairro ||
-            !this.atleta.municipio ||
-            !this.atleta.uf
-        ) {
-
-            alert('Preencha todos os campos!');
-
-            return;
-        }
-
-
-        this.atletaService.salvarAtleta(this.atleta).subscribe({
-
-            next: (resposta) => {
-
-                console.log('Atleta cadastrado:', resposta);
-
-                alert('Atleta cadastrado com sucesso!');
-
-                this.limparFormulario();
-
-            },
-
-            error: (erro) => {
-
-                console.error('Erro ao cadastrar atleta:', erro);
-
-                alert('Erro ao cadastrar atleta.');
-
-            }
-
-        });
-
-    }
-
-
-    limparFormulario() {
-
-        this.atleta = {
-            nome: '',
-            cpf: '',
-            sexo: '',
-            cep: '',
-            rua: '',
-            bairro: '',
-            municipio: '',
-            uf: ''
-        };
-
-        this.municipios = [];
-
-    }
-
+    this.atletaService.listarAtletas();
+  }
 }
