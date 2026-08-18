@@ -1,7 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { Atleta } from '../../models/atleta';
 import { AtletaService } from '../../service/atleta.service';
 import { Router } from '@angular/router';
+import { signal } from '@angular/core';
 
 @Component({
   selector: 'app-atleta-list-component',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class AtletaListComponent {
 
+    //listaAtletas: Atleta[] = []
   listaAtletas = signal<Atleta[]>([]);
 
   constructor(
@@ -27,20 +29,16 @@ export class AtletaListComponent {
     this.listaService.listarAtletas()
       .subscribe({
         next: (dadosAtletas) => {
+          //this.listaAtletas = [...dadosAtletas].sort((a, b) => a.nome.localeCompare(b.nome))
+          this.listaAtletas.set([...dadosAtletas].sort((a, b) => a.nome.localeCompare(b.nome)))
 
-          this.listaAtletas.set(
-            [...dadosAtletas].sort((a, b) =>
-              a.nome.localeCompare(b.nome)
-            )
-          );
-
-          console.table(this.listaAtletas());
+          console.table(this.listaAtletas())
         },
-
         error: (msgErro) => {
-          console.log('Erro ao listar Atletas ', msgErro);
+          console.log("Erro ao listar Atletas ", msgErro)
         }
-      });
+      })
+
   }
 
   excluir(id: number) {
