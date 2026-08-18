@@ -1,76 +1,26 @@
-#home {
-    width: 100%;
-    min-height: 80vh;
-
+#section-home {
+    width: 1000px;
+    height: 650px;
+    margin: 20px auto;
+    padding: 25px;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    background:
-        linear-gradient(
-            135deg,
-            #fff7fa,
-            #fce5ed
-        );
-
-    box-sizing: border-box;
+    font-size: 60px;
+    border: 1px solid #f0bfd0;
+    background-color: #fff7fa;
 }
 
-.conteudo {
-    text-align: center;
-
-    padding: 60px 80px;
-
-    background-color: rgba(255, 255, 255, 0.75);
-
-    border-radius: 25px;
-
-    box-shadow:
-        0 8px 25px rgba(232, 169, 191, 0.20);
-
-    border: 1px solid #f4d3df;
+#titulo-esporte {
+    color: #6f3d50;
+    margin: 0px;
+    letter-spacing: 5px;
 }
 
-.conteudo p {
-    margin: 0 0 12px;
-
-    color: #b56b88;
-
-    font-size: 13px;
-
+#titulo-arlivre {
+    border: 1px solid #f0bfd0;
+    padding: 10px 25px;
+    color: #79515f;
     font-weight: bold;
-
-    letter-spacing: 3px;
-}
-
-.conteudo h1 {
-    margin: 0 0 15px;
-
-    color: #a85d7b;
-
-    font-size: 48px;
-
-    font-weight: bold;
-}
-
-.conteudo span {
-    color: #8f5369;
-
-    font-size: 15px;
-}
-
-@media (max-width: 600px) {
-
-    .conteudo {
-        width: 90%;
-
-        padding: 45px 20px;
-
-        box-sizing: border-box;
-    }
-
-    .conteudo h1 {
-        font-size: 36px;
-    }
-
+    border-radius: 1000px;
 }

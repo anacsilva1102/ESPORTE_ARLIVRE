@@ -1,23 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
+    margin: 0px;
+    padding: 0px;
     box-sizing: border-box;
+    font-family: Roboto;
 }
 
-html,
-body {
-    margin: 0;
-    padding: 0;
-    min-height: 100%;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #ffffff;
-    color: #79515f;
-}
-
-body {
-    overflow-x: hidden;
-}
-
-button,
-input,
-select {
-    font-family: inherit;
+:root {
+    --cor-primaria: #14532D;
+    --cor-secundaria: #22C55E;
+    --cor01: #647067;
+    --cor02: #F5F3E8;
+    --botao01: #0EA5E9;
+    --botao02: #F97316;
+    --branca: #ffffff;
 }

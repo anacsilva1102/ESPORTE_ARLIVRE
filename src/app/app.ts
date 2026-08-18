@@ -1,18 +1,15 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+
 import { MenuComponent } from './component/menu-component/menu-component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, MenuComponent],
-  template: `
-    <app-menu-component></app-menu-component>
-    <router-outlet></router-outlet>
-  `
+  templateUrl: './app.html',
+  styleUrl: './app.css'
 })
-export class AppComponent {
-
+export class App {
   protected readonly title = signal('EsporteArlivre');
-
 }
