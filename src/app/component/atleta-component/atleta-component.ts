@@ -32,6 +32,10 @@ export class AtletaComponent {
     this.limparDados()
   }
 
+  ngOnInit(){
+    
+  }
+
   limparDados() {
     this.nome = ''
     this.cpf = 0
