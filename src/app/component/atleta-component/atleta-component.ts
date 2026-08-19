@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 import { AtletaService } from '../../service/atleta.service';
 import { Atleta } from '../../models/atleta';
+import { Router } from 'express';
 
 @Component({
   selector: 'app-atleta-component',
@@ -22,8 +24,15 @@ export class AtletaComponent {
   cidade = ''
   uf = ''
 
+  idAtleta = 0
+
   //DECLARAÇÃO DO CONSTRUTOR
-  constructor(private atletaService: AtletaService) { }
+  constructor(private atletaService: AtletaService,
+    private http: ActivatedRoute
+  
+
+    
+    ) { }
 
   //DECLARAÇÃO DE FUNÇÕES
   exibirDados() {
@@ -33,6 +42,12 @@ export class AtletaComponent {
   }
 
   ngOnInit(){
+    this.idAtleta = Number(this.http.snapshot.paramMap.get('id'))
+     
+    if(this.idAtleta > 0){
+      this.carregaDados(this.idAtleta)
+    }
+
     
   }
 
@@ -45,6 +60,26 @@ export class AtletaComponent {
     this.bairro = ''
     this.cidade = ''
     this.uf = ''
+  }
+
+  carregaDados(idAtleta: number){
+    this.atletaService.listarAtleta(idAtleta)
+    .subscribe({
+      next:(dadosAtleta)=>{
+        this.nome = dadosAtleta.nome
+        this.cpf = dadosAtleta.cpf
+        this.sexo = dadosAtleta.sexo
+        this.cep = dadosAtleta.cep
+        this.ruaLogradouro = dadosAtleta.ruaLogradouro
+        this.bairro = dadosAtleta.bairro
+        this.cidade = dadosAtleta.cidade
+        this.uf = dadosAtleta.uf
+      },
+      error:(msgErro)=>{
+        console.log('ERRO AO LISTAR ATLETA', msgErro)
+      }
+      
+    })
   }
 
   enviarDadosAtleta(){
