@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
@@ -25,14 +25,14 @@ export class AtletaComponent {
   uf = ''
 
   idAtleta = 0
+  editar = false
 
   //DECLARAÇÃO DO CONSTRUTOR
-  constructor(private atletaService: AtletaService,
-    private http: ActivatedRoute
-  
-
-    
-    ) { }
+  constructor(
+    private atletaService: AtletaService,
+    private http: ActivatedRoute,
+    private cdr: ChangeDetectorRef
+  ) { }
 
   //DECLARAÇÃO DE FUNÇÕES
   exibirDados() {
@@ -41,14 +41,13 @@ export class AtletaComponent {
     this.limparDados()
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.idAtleta = Number(this.http.snapshot.paramMap.get('id'))
-     
-    if(this.idAtleta > 0){
+
+    if (this.idAtleta > 0) {
+      this.editar = true
       this.carregaDados(this.idAtleta)
     }
-
-    
   }
 
   limparDados() {
@@ -62,27 +61,29 @@ export class AtletaComponent {
     this.uf = ''
   }
 
-  carregaDados(idAtleta: number){
+  carregaDados(idAtleta: number) {
     this.atletaService.listarAtleta(idAtleta)
-    .subscribe({
-      next:(dadosAtleta)=>{
-        this.nome = dadosAtleta.nome
-        this.cpf = dadosAtleta.cpf
-        this.sexo = dadosAtleta.sexo
-        this.cep = dadosAtleta.cep
-        this.ruaLogradouro = dadosAtleta.ruaLogradouro
-        this.bairro = dadosAtleta.bairro
-        this.cidade = dadosAtleta.cidade
-        this.uf = dadosAtleta.uf
-      },
-      error:(msgErro)=>{
-        console.log('ERRO AO LISTAR ATLETA', msgErro)
-      }
-      
-    })
+      .subscribe({
+        next: (dadosAtleta) => {
+          this.nome = dadosAtleta.nome
+          this.cpf = dadosAtleta.cpf
+          this.sexo = dadosAtleta.sexo
+          this.cep = dadosAtleta.cep
+          this.ruaLogradouro = dadosAtleta.ruaLogradouro
+          this.bairro = dadosAtleta.bairro
+          this.cidade = dadosAtleta.cidade
+          this.uf = dadosAtleta.uf
+
+          //EXECUTA A DETECÇÃO DE ALTERAÇÃO MANUALMENTE
+          this.cdr.detectChanges()
+        },
+        error: (msgErro) => {
+          console.log('ERRO AO LISTAR ATLETA ', msgErro)
+        }
+      })
   }
 
-  enviarDadosAtleta(){
+  enviarDadosAtleta() {
     const atleta = new Atleta()
     atleta.nome = this.nome
     atleta.cpf = this.cpf
@@ -91,22 +92,38 @@ export class AtletaComponent {
     atleta.ruaLogradouro = this.ruaLogradouro
     atleta.bairro = this.bairro
     atleta.cidade = this.cidade
-    atleta.uf  = this.uf
-    
-    this.atletaService.salvarAtleta(atleta)
-    .subscribe({
-      next: (resposta)=>{
-        console.log( resposta)
-      },
-      error:(msgErro)=>{
-        console.log( msgErro)
-      }
-    })
-    
-    this.limparDados()   
+    atleta.uf = this.uf
+
+    if (this.editar) {
+      atleta.id = this.idAtleta
+      
+      this.atletaService.alterarAtleta(atleta)
+        .subscribe({
+          next: (resposta) => {
+            console.log(resposta)
+          },
+          error: (msgErro) => {
+            console.log(msgErro)
+          }
+        })
+
+    } else {
+      this.atletaService.salvarAtleta(atleta)
+        .subscribe({
+          next: (resposta) => {
+            console.log(resposta)
+          },
+          error: (msgErro) => {
+            console.log(msgErro)
+          }
+        })
+    }
+
+
+    this.limparDados()
 
     this.atletaService.listarAtletas()
-    
+
   }
 
 
