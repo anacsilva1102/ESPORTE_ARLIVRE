@@ -4,74 +4,76 @@ import { Observable } from 'rxjs';
 
 import { Atleta } from '../models/atleta';
 
+
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
 export class AtletaService {
 
-  private urlApi =
-    'https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/atleta';
+    constructor(private http: HttpClient) { }
 
-  constructor(private http: HttpClient) {}
+    listarAtletas(): Observable<Atleta[]> {
+        const urlApi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/atleta`
+        return this.http.get<Atleta[]>(urlApi)
+    }
 
+    listarAtleta(idAtleta: number): Observable<Atleta> {
+        const urlApi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/atleta/${idAtleta}`
+        return this.http.get<Atleta>(urlApi)
+    }
 
-  adicionarAtleta(atleta: Atleta): Observable<Atleta> {
+    salvarAtleta(atleta: Atleta): Observable<Atleta> {
+        const urlApi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/atleta`
+        return this.http.post<Atleta>(urlApi, atleta)
+    }
 
-    return this.http.post<Atleta>(
-      this.urlApi,
-      atleta
-    );
+    excluirAtleta(idAtleta: number): Observable<Atleta> {
+        const urlApi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/atleta/${idAtleta}`
+        return this.http.delete<Atleta>(urlApi)
+    }
 
-  }
+    alterarAtleta(atleta: Atleta): Observable<Atleta> {
+        const urlApi = `https://6a7f6d923183f5fd884b1a61.mockapi.io/esportearlivre/atleta/${atleta.id}`
 
-
-  listarAtletas(): Observable<Atleta[]> {
-
-    return this.http.get<Atleta[]>(
-      this.urlApi
-    );
-
-  }
-
-
-  listarAtleta(idAtleta: number): Observable<Atleta> {
-
-    return this.http.get<Atleta>(
-      `${this.urlApi}/${idAtleta}`
-    );
-
-  }
+        return this.http.put<Atleta>(urlApi, atleta)
+    }
 
 
-  excluirAtleta(idAtleta: number): Observable<Atleta> {
+    /*
+    //DECLARANDO ARRAY atletas
+    private atletas: Atleta[] = []
 
-    return this.http.delete<Atleta>(
-      `${this.urlApi}/${idAtleta}`
-    );
+    //DECLARAÇÃO DAS FUNÇÕES DE MANIPULAÇÃO DO ARRAY
+    //ADICIONANDO ELEMNTO
+    adicionarAtleta(atleta: Atleta){
+        //ARRRRRMMMMMENNGUE PARA GERAR ID
+        atleta.id = this.atletas.length + 1
+        this.atletas.push(atleta)
+    }
 
-  }
+    //LISTAR ELEMENTOS
+    listarAtletas(){
+        console.table(this.atletas)
 
+        return this.atletas
+    }
 
-  alterarAtleta(atleta: Atleta): Observable<Atleta> {
+    //REMOVER ELEMENTO
+    removerElemento(idAtleta: number){
+        this.atletas = this.atletas.filter(elem=>elem.id !== idAtleta)
+    }
 
-    return this.http.put<Atleta>(
-      `${this.urlApi}/${atleta.id}`,
-      atleta
-    );
+    //REMOVER ELEMENTO2
+    removerElemento2(atleta: Atleta){
+        let posArray = this.atletas.findIndex(elem=>elem.id !== atleta.id)
+        this.atletas.splice(1,posArray)
+    }
 
-  }
+    //ALTERANDO ELEMENTO DO ARRAY
+    alterarElemento(atleta: Atleta){
+        let posArray = this.atletas.findIndex(elem=>elem.id !== atleta.id)
+        this.atletas[posArray] = atleta
+    }*/
 
-
-  alterarAtleta2(
-    idAtleta: number,
-    atleta: Atleta
-  ): Observable<Atleta> {
-
-    return this.http.put<Atleta>(
-      `${this.urlApi}/${idAtleta}`,
-      atleta
-    );
-
-  }
 
 }

@@ -136,7 +136,7 @@ export class AtletaComponent {
 
     } else {
 
-      this.atletaService.adicionarAtleta(atleta)
+      this.atletaService.salvarAtleta(atleta)
         .subscribe({
 
           next: (resposta: Atleta) => {
