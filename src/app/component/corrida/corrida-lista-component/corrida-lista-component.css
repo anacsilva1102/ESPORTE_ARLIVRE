@@ -1,0 +1,77 @@
+#div-lista {
+    width: 1000px;
+    max-width: 90%;
+    padding: 25px;
+    margin: 30px auto;
+    color: var(--cor-secundaria);
+}
+
+h2 {
+    text-align: center;
+    margin: 20px 0 30px;
+    color: var(--cor-primaria);
+}
+
+#lista-corrida {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.item-corrida {
+    padding: 20px;
+    background-color: #fff7fa;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.10);
+    border-left: 5px solid var(--cor-primaria);
+}
+
+.dados-corrida {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.links-lista {
+    display: flex;
+    gap: 15px;
+    margin-left: 20px;
+}
+
+.lnk-editar,
+.lnk-excluir {
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    font-size: 13px;
+}
+
+.lnk-editar {
+    color: var(--cor-primaria);
+    border: 1px solid var(--cor-primaria);
+}
+
+.lnk-excluir {
+    color: var(--cor-botao2);
+    border: 1px solid var(--cor-botao2);
+}
+
+.lnk-editar:hover,
+.lnk-excluir:hover {
+    opacity: 0.6;
+}
+
+.div-item-corrida {
+    padding: 30px;
+    text-align: center;
+    background-color: #fff7fa;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.10);
+}

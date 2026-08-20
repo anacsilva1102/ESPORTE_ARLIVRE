@@ -1,0 +1,91 @@
+#div-form {
+    width: 700px;
+    max-width: 90%;
+    min-height: 450px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff7fa;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+h2 {
+    text-align: center;
+    color: #b56b88;
+    margin-bottom: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label {
+    font-weight: bold;
+    color: #555;
+}
+
+textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    resize: none;
+    box-sizing: border-box;
+}
+
+input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+#div-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0 20px;
+}
+
+#div-checkbox label {
+    font-weight: normal;
+    margin-right: 15px;
+}
+
+.btnSelecao {
+    width: 16px;
+    height: 16px;
+}
+
+#div-btns {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+#btnAdd {
+    background-color: #b56b88;
+    color: white;
+}
+
+#btnLimpar {
+    background-color: #ddd;
+    color: #333;
+}
+
+button:hover {
+    opacity: 0.85;
+}
